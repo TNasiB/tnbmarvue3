@@ -3,7 +3,7 @@
         <div class="container">
             <h2 class="city-title title">Выберите город и организацию</h2>
             <div class="city-inner frame-wrapper">
-                <input class="input-city completed shadow" type="text" placeholder="Выберите город">
+                <input class="input-city completed shadow" @input="GetInfo" type="text" placeholder="Выберите город">
                 <input class="input-org shadow" type="text" placeholder="Выберите организацию">
                 <ul class="org-table shadow">
                     <!-- Отдельными компонентами -->
@@ -20,6 +20,13 @@
 <script>
 export default {
     name: "Frame-two",
+    methods:{
+        GetInfo(){
+            let InputCompany=document.querySelector('.input-city')
+            let value=InputCompany.value
+            this.$emit('get-info',value)
+        }
+    }
 }
 </script>
 

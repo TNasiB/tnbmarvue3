@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <HeaderNav/>
-    <SliderForm/>
+    <SliderForm
+    @get-data="GetData"
+    />
   </div>
 </template>
 
@@ -14,6 +16,22 @@ export default {
   components: {
     SliderForm,
     HeaderNav,
+  },
+  data(){
+    return{
+      companies:{},
+    }
+  },
+  methods:{
+    GetData(value){
+      var query = value;
+
+      fetch(`https://search-maps.yandex.ru/v1/?text=${query}&type=biz&lang=ru_RU&apikey=d81da452-d93b-4e52-afd1-27aa7282013f`)
+      .then(response=>response.json())
+      .then(data=>(this.companies=data))
+      console.log(this.companies.features[1].properties.name)
+      console.log(this.companies.features[1].properties.description) // запрос
+    }
   },
   setup() {
       const onSwiper = (swiper) => {
