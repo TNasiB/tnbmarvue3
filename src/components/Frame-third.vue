@@ -1,21 +1,44 @@
 <template>
     <div class="paciens">
         <div class="container">
-            <div class="paciens__inner flex-column">
-                <h2 class="paciens_title title">
-                    Выберите количество пациентов на прием
-                </h2>
-                <input class="slider" type="range">
+            <h2 class="paciens_title title">Выберите количество пациентов на прием</h2>
+            <div class="paciens__inner flex-column frame-wrapper">
+                <input @input="getValue" class="slider" type="range" min="300" max="1900">
                 <div class="numbers"></div>
             </div>
+            <input @input="setValue" class="shadow input-test" type="number" value=300>
         </div>
     </div>
 </template>
 
-<style scoped>
-.paciens__inner {
-    height: calc(100vh - 108px);
+<script>
+export default {
+  name: "Frame-third",
+  data() {
+    return {
+      value: 300
+    }
+  },
+  methods: {
+    getValue() {
+      let slider = document.querySelector(".slider")
+      let inputTest = document.querySelector(".input-test")
+      this.value = slider.value
+      inputTest.value = slider.value
+    },
+    setValue() {
+      let slider = document.querySelector(".slider")
+      let inputTest = document.querySelector(".input-test")
+      slider.value = inputTest.value
+    }
+  }
 }
+
+
+</script>
+
+
+<style scoped>
 .numbers {
     background-image: url(../assets/img/numbers.svg);
     background-size: contain;

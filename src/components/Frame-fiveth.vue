@@ -1,8 +1,8 @@
 <template>
-    <div class="frame-wrapper">
-        <div class="frame-date">
-            <div class="container">
-                <div class="title">Выберите дату и время приема</div>
+    <div class="frame-date">
+        <div class="container">
+            <div class="title">Выберите дату и время приема</div>
+            <div class="frame-date-inner frame-wrapper">
                 <div class="frame-date-wrapper">
                     <div class="frame-date-entry-wrapper flex">
                         <input type="date" data-placeholder="Дата" class="entry__date" value="2000-01-01">

@@ -23,18 +23,23 @@ export default {
     header
         background-color: #26A69A
     .header 
-        height: 108px
+        height: 100px
         color: #fff
         align-items: center
         justify-content: space-between
+    .logo
+        align-items: center
     .logo-img
         background-image: url(../assets/img/logo.png)
-        width: 32px
-        height: 32px
-        background-size: 32px
+        background-size: contain
+        background-repeat: no-repeat
+        width: 50px
+        height: 50px
     .logo-name 
         max-width: 165px
         margin-left: 20px
+        font-size: 30px
     .tel 
         text-decoration: underline
+        font-size: 30px
 </style>

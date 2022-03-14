@@ -1,8 +1,8 @@
 <template>
     <div class="specialists">
         <div class="container">
-            <div class="specialists__inner">
-                <h2 class="title">Выберите специалистов</h2>
+            <h2 class="title">Выберите специалистов</h2>
+            <div class="specialists__inner frame-wrapper">
                 
                 <ul class="spec-list">
                     <li class="spec-face">

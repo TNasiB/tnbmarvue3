@@ -1,41 +1,40 @@
 <template>
-    <div class="frame-wrapper">
-        <div class="frame-total">
-            <div class="container">
-                <div class="frame-total-wrapper">
-                    <div class="total-wrapper flex">
-                        <div class="total-wrapper-key">
-                            <div class="text__key">ФИО</div>
-                            <div class="text__key">Номер телефона</div>
-                            <div class="text__key">E-mail</div>
-                            <div class="text__key">Город</div>
-                            <div class="text__key">Организация</div>
-                            <div class="text__key">Адрес</div>
-                            <div class="text__key">Количество пациентов</div>
-                            <div class="text__key">Специалист</div>
-                             <div class="text__key">Дата приема</div>
-                             <div class="text__key">Время приема</div>
-                             <div class="text__key">Стоимость</div>
-                        </div>
-                        <div class="total-wrapper-value">
-                            <div class="text__value">Маннанов Марат Фаилвеич</div>
-                            <div class="text__value">79373284209</div>
-                            <div class="text__value">dr.mannanov@yandex.ru</div>
-                            <div class="text__value">Уфа</div>
-                            <div class="text__value">ООО "Меги"</div>
-                            <div class="text__value">Давлетшина 30</div>
-                            <div class="text__value">300</div>
-                            <div class="text__value">Стоматолог,Хуелог</div>
-                            <div class="text__value">01.01.2002</div>
-                            <div class="text__value">21:21</div>
-                            <div class="text__value">ОООООООчень много</div>
-                        </div>
+    <div class="frame-total">
+        <div class="container">
+            <h2 class="title">Общая информация</h2>
+            <div class="frame-total-wrapper frame-wrapper">
+                <div class="total-wrapper flex">
+                    <div class="total-wrapper-key">
+                        <div class="text__key">ФИО</div>
+                        <div class="text__key">Номер телефона</div>
+                        <div class="text__key">E-mail</div>
+                        <div class="text__key">Город</div>
+                        <div class="text__key">Организация</div>
+                        <div class="text__key">Адрес</div>
+                        <div class="text__key">Количество пациентов</div>
+                        <div class="text__key">Специалист</div>
+                            <div class="text__key">Дата приема</div>
+                            <div class="text__key">Время приема</div>
+                            <div class="text__key">Стоимость</div>
                     </div>
-                    
-                         <button class="form-total__button">Записаться на прием</button>
+                    <div class="total-wrapper-value">
+                        <div class="text__value">Маннанов Марат Фаилвеич</div>
+                        <div class="text__value">79373284209</div>
+                        <div class="text__value">dr.mannanov@yandex.ru</div>
+                        <div class="text__value">Уфа</div>
+                        <div class="text__value">ООО "Меги"</div>
+                        <div class="text__value">Давлетшина 30</div>
+                        <div class="text__value">300</div>
+                        <div class="text__value">Стоматолог,Хуелог</div>
+                        <div class="text__value">01.01.2002</div>
+                        <div class="text__value">21:21</div>
+                        <div class="text__value">ОООООООчень много</div>
+                    </div>
                 </div>
-
+                
+                <button class="form-total__button">Записаться на прием</button>
             </div>
+
         </div>
     </div>
 </template>

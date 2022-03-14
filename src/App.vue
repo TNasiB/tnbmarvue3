@@ -48,6 +48,8 @@ button
   cursor: pointer
 input
   border: none
+body
+  overflow-y: hidden
 button.radio
   border-radius: 50%
   width: 35px
@@ -74,7 +76,9 @@ button.radio.active
 .title 
   font-size: 40px
   color: #004D45
-  margin: 40px 0
   padding-left: 20px
+  text-align: center
+  text-transform: uppercase
+  margin: 20px 60px 0
 </style>
 

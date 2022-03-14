@@ -34,7 +34,6 @@
     </swiper-slide>
 
   </swiper>
-  <button></button>
 </template>
 
 <script>
@@ -85,7 +84,7 @@ export default {
   height: 40px
   cursor: pointer
   color: #fff
-  bottom: 200px
+  top: 25px
 
 .swiper-button-prev::after, .swiper-button-next::after
   content: ""
@@ -106,9 +105,11 @@ export default {
 .swiper-button-prev
   left: 30px
 .main
-  height: 100vh
   color: #000
-.frame-wrapper 
-  height: calc(100vh - 108px)
+.frame-wrapper
   background-color: #fff
+  display: flex
+  flex-direction: column
+  justify-content: center
+  margin-top: 60px
 </style>
