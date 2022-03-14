@@ -14,7 +14,9 @@
     </swiper-slide>
 
     <swiper-slide>
-        <FrameTwo/>
+        <FrameTwo
+        @get-info="GetData"
+        />
     </swiper-slide>
 
     <swiper-slide>
@@ -59,6 +61,11 @@ export default {
         FrameFourth,
         FrameFiveth,
         FrameSixth,
+    },
+    methods:{
+      GetData(value){
+        this.$emit('get-data',value)
+      }
     },
     setup() {
       const onSwiper = (swiper) => {
