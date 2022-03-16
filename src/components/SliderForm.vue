@@ -22,7 +22,9 @@
     </swiper-slide>
 
     <swiper-slide>
-        <FrameThird/>
+        <FrameThird
+        @set-count="setCount"
+        />
     </swiper-slide>
 
     <swiper-slide>
@@ -34,7 +36,10 @@
     </swiper-slide>
 
     <swiper-slide>
-        <FrameSixth/>
+        <FrameSixth
+        :user="user"
+        :pacientCount="pacientCount"
+        />
     </swiper-slide>
 
   </swiper>
@@ -65,7 +70,8 @@ export default {
         FrameSixth,
     },
     props: {
-      user: {type: Object}
+      user: {type: Object},
+      pacientCount: {type: Number},
     },
     methods:{
       GetData(value){
@@ -73,6 +79,9 @@ export default {
       },
       getValue(user) {
         this.$emit("get-value", user)
+      },
+      setCount(count) {
+        this.$emit("set-count", count)
       }
     },
     setup() {

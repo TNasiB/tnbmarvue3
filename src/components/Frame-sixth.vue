@@ -13,18 +13,18 @@
                         <div class="text__key">Адрес</div>
                         <div class="text__key">Количество пациентов</div>
                         <div class="text__key">Специалист</div>
-                            <div class="text__key">Дата приема</div>
-                            <div class="text__key">Время приема</div>
-                            <div class="text__key">Стоимость</div>
+                        <div class="text__key">Дата приема</div>
+                        <div class="text__key">Время приема</div>
+                        <div class="text__key">Стоимость</div>
                     </div>
                     <div class="total-wrapper-value">
-                        <div class="text__value">Маннанов Марат Фаилвеич</div>
-                        <div class="text__value">79373284209</div>
-                        <div class="text__value">dr.mannanov@yandex.ru</div>
+                        <div class="text__value">{{user.name}}</div>
+                        <div class="text__value">{{user.number}}</div>
+                        <div class="text__value">{{user.mail}}</div>
                         <div class="text__value">Уфа</div>
                         <div class="text__value">ООО "Меги"</div>
                         <div class="text__value">Давлетшина 30</div>
-                        <div class="text__value">300</div>
+                        <div class="text__value">{{this.pacientCount}}</div>
                         <div class="text__value">Стоматолог,Хуелог</div>
                         <div class="text__value">01.01.2002</div>
                         <div class="text__value">21:21</div>
@@ -40,7 +40,11 @@
 </template>
 <script>
 export default {
-    
+    name: "Frame-sixth",
+    props: {
+        user: {type: Object},
+        pacientCount: {type: Number}
+    }
 }
 </script>
 

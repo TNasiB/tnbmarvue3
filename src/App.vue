@@ -4,6 +4,9 @@
     <SliderForm
     @get-data="GetData"
     @get-value="getValue"
+    @set-count="setCount"
+    :user="user"
+    :pacientCount="pacientCount"
     />
   </div>
 </template>
@@ -21,12 +24,13 @@ export default {
   data(){
     return{
       companies:{},
-      user: {}
+      user: {},
+      pacientCount: 300,
     }
   },
   methods:{
     GetData(value){
-      var query = value;
+      let query = value;
 
       fetch(`https://search-maps.yandex.ru/v1/?text=${query}&type=biz&lang=ru_RU&apikey=d81da452-d93b-4e52-afd1-27aa7282013f`)
       .then(response=>response.json())
@@ -36,7 +40,9 @@ export default {
     },
     getValue(user) {
       this.user = user
-      console.log(this.user)
+    },
+    setCount(count) {
+      this.pacientCount = count
     }
   },
   setup() {

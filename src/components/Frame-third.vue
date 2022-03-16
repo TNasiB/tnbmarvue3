@@ -3,12 +3,12 @@
         <div class="container">
             <h2 class="paciens_title title">Выберите количество пациентов на прием</h2>
             <div class="paciens__inner flex-column frame-wrapper">
-                <input class="slider" type="range" min="300" max="1900" v-model="this.value">
+                <input @input="setCount" class="slider" type="range" min="300" max="1900" v-model="this.value">
                 <div class="numbers"></div>
             </div>
             <div class="input-wrapper flex">
                 <p>Приемы: </p>
-                <input class="input-test" type="number" v-model="this.value">
+                <input @input="setCount" class="input-test" type="number" v-model="this.value">
             </div>
         </div>
     </div>
@@ -23,6 +23,9 @@ export default {
     }
   },
   methods: {
+    setCount() {
+      this.$emit("set-count", this.value)
+    }
   }
 }
 </script>
