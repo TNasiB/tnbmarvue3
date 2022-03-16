@@ -10,7 +10,9 @@
   >
 
     <swiper-slide>
-        <FrameOne/>
+        <FrameOne
+        @get-value="getValue"
+        />
     </swiper-slide>
 
     <swiper-slide>
@@ -62,9 +64,15 @@ export default {
         FrameFiveth,
         FrameSixth,
     },
+    props: {
+      user: {type: Object}
+    },
     methods:{
       GetData(value){
         this.$emit('get-data',value)
+      },
+      getValue(user) {
+        this.$emit("get-value", user)
       }
     },
     setup() {

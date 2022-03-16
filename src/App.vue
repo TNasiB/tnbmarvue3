@@ -3,6 +3,7 @@
     <HeaderNav/>
     <SliderForm
     @get-data="GetData"
+    @get-value="getValue"
     />
   </div>
 </template>
@@ -20,6 +21,7 @@ export default {
   data(){
     return{
       companies:{},
+      user: {}
     }
   },
   methods:{
@@ -31,6 +33,10 @@ export default {
       .then(data=>(this.companies=data))
       console.log(this.companies.features[1].properties.name)
       console.log(this.companies.features[1].properties.description) // запрос
+    },
+    getValue(user) {
+      this.user = user
+      console.log(this.user)
     }
   },
   setup() {

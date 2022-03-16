@@ -3,10 +3,13 @@
         <div class="container">
             <h2 class="paciens_title title">Выберите количество пациентов на прием</h2>
             <div class="paciens__inner flex-column frame-wrapper">
-                <input @input="getValue" class="slider" type="range" min="300" max="1900">
+                <input class="slider" type="range" min="300" max="1900" v-model="this.value">
                 <div class="numbers"></div>
             </div>
-            <input @input="setValue" class="shadow input-test" type="number" value=300>
+            <div class="input-wrapper flex">
+                <p>Приемы: </p>
+                <input class="input-test" type="number" v-model="this.value">
+            </div>
         </div>
     </div>
 </template>
@@ -20,23 +23,9 @@ export default {
     }
   },
   methods: {
-    getValue() {
-      let slider = document.querySelector(".slider")
-      let inputTest = document.querySelector(".input-test")
-      this.value = slider.value
-      inputTest.value = slider.value
-    },
-    setValue() {
-      let slider = document.querySelector(".slider")
-      let inputTest = document.querySelector(".input-test")
-      slider.value = inputTest.value
-    }
   }
 }
- 
-
 </script>
-
 
 <style scoped>
 .numbers {
@@ -49,6 +38,15 @@ export default {
 }
 .slider {
     margin-top: 30px;
+}
+.input-test {
+  font-size: 30px;
+  width: 100px;
+}
+.input-wrapper {
+  justify-content: space-between;
+  margin-top: 30px;
+  font-size: 30px;
 }
 input[type=range].slider {
   width: 100%;

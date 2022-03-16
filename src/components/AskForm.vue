@@ -3,7 +3,7 @@
         <input type="text" placeholder="ФИО" class="form-entry__name">
         <input type="text" placeholder="Номер телефона" class="form-entry__number">
         <input type="e-mail" placeholder="E-mail" class="form-entry__mail">
-        <button class="form-entry__button" @click="NextFrame">Продолжить</button>
+        <button class="form-entry__button" @click="GetValue">Продолжить</button>
     </div>
 </template>
 
@@ -11,18 +11,18 @@
 export default {
     name: "AskForm",
     methods:{
-        NextFrame(){
-            // let inputName=document.querySelector('.form-entry__name')
-            // // let inputNumber=document.querySelector('.form-entry__number')
-            // // let inputMail=document.querySelector('.form-entry__mail')
-            // // let form=document.querySelector('.frame-form-entry-wrapper')
-            // if (inputName.value=''){
-            //     inputName.classList.add('red')
-            // }
+        GetValue(){
+            let name = document.querySelector(".form-entry__name"),
+                number = document.querySelector(".form-entry__number"),
+                mail = document.querySelector(".form-entry__mail"),
+                user = {
+                    name: name.value,
+                    number: number.value,
+                    mail: mail.value
+                }
 
+            this.$emit("get-value", user)
         }
-
-
     },
 }
 </script>
