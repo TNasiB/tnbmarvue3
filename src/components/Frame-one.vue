@@ -4,7 +4,9 @@
             <h2 class="frame-form__title title">Заявка на медицинское обследование</h2>
             <div class="frame-form-inner frame-wrapper">
                 <div class="frame-form-wrapper flex">
-                    <AskForm/>
+                    <AskForm
+                    @get-value="getValue"
+                    />
                     <div class="frame-form__img"></div>
                 </div>
             </div>
@@ -20,6 +22,11 @@ export default {
     name: "Frame-one",
     components: {
         AskForm
+    },
+    methods: {
+        getValue(user) {
+            this.$emit("get-value", user)
+        }
     }
 }
 </script>
