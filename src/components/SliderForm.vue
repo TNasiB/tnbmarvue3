@@ -18,6 +18,8 @@
     <swiper-slide>
         <FrameTwo
         @get-info="GetData"
+        :companies="companies"
+        @send-organization="SendOrganization"
         />
     </swiper-slide>
 

@@ -15,6 +15,7 @@
     :dateObj="dateObj"
     :specialists="specialists"
     :activeSpecs="activeSpecs"
+
     :companies="companies"
     :organization="organization"
     />
@@ -34,7 +35,7 @@ export default {
   },
   data(){
     return{
-      companies:{},
+      companies:[],
       user: {},
       pacientCount: 300,
       dateObj: {},
