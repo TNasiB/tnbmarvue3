@@ -19,16 +19,12 @@
 
                     </tr>
                     <tr>
-                        <td class="text__key">Город</td>
-                        <td class="text__value">Уфа</td>
-                    </tr>
-                    <tr>
                         <td class="text__key">Организация</td>
-                        <td class="text__value">ООО "Меги"</td>
+                        <td class="text__value">{{this.organization.name}}</td>
                     </tr>
                     <tr>
                         <td class="text__key">Адрес</td>
-                        <td class="text__value">Давлетшина 30</td>
+                        <td class="text__value">{{this.organization.address}}</td>
                     </tr>
                     <tr>
                         <td class="text__key">Количество пациентов</td>
@@ -64,6 +60,7 @@ export default {
         user: {type: Object},
         pacientCount: {type: Number},
         dateObj: {type: Object},
+        organization:{type:Object},
     }
 }
 </script>
