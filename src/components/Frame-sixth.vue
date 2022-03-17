@@ -62,14 +62,12 @@ export default {
     border-radius: 50px;
     padding: 20px 40px;
     margin: 0 auto;
-    margin-top: 50px;
 }
 .text__key,.text__value{
     font-family: 'Roboto';
     font-size: 20px;
-    line-height: 28px;
+    line-height: 24px;
     color: #004D45;
-    padding-bottom: 7px;
 }
 .text__value{
     margin-left: 5vw;
