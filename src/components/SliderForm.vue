@@ -28,7 +28,10 @@
     </swiper-slide>
 
     <swiper-slide>
-        <FrameFourth/>
+        <FrameFourth
+        :specialists="specialists"
+        @add-doctor="addDoctor"
+        />
     </swiper-slide>
 
     <swiper-slide>
@@ -42,6 +45,7 @@
         :user="user"
         :pacientCount="pacientCount"
         :dateObj="dateObj"
+        :activeSpecs="activeSpecs"
         />
     </swiper-slide>
 
@@ -77,6 +81,8 @@ export default {
       user: {type: Object},
       pacientCount: {type: Number},
       dateObj: {type: Object},
+      specialists: {type: Array},
+      activeSpecs: {type: Array}
     },
     methods:{
       GetData(value){
@@ -90,6 +96,9 @@ export default {
       },
       setTime(dateObj) {
         this.$emit("set-time", dateObj)
+      },
+      addDoctor(doctor) {
+          this.$emit("add-doctor", doctor)
       }
     },
     setup() {

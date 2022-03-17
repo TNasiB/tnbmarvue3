@@ -36,7 +36,12 @@
                     </tr>
                     <tr>
                         <td class="text__key">Специалист</td>
-                        <td class="text__value">Стоматолог,Хуелог</td>
+                        <td class="text__value">
+                            <span 
+                            v-for="activeSpec in activeSpecs"
+                            :key="activeSpec.id"
+                            >{{ activeSpec.title }}, </span>
+                        </td>
 
                     </tr>
                     <tr>
@@ -64,6 +69,7 @@ export default {
         user: {type: Object},
         pacientCount: {type: Number},
         dateObj: {type: Object},
+        activeSpecs: {type: Array}
     }
 }
 </script>
