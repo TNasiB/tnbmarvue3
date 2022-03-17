@@ -5,8 +5,10 @@
     @get-data="GetData"
     @get-value="getValue"
     @set-count="setCount"
+    @set-time="setTime"
     :user="user"
     :pacientCount="pacientCount"
+    :dateObj="dateObj"
     />
   </div>
 </template>
@@ -26,6 +28,7 @@ export default {
       companies:{},
       user: {},
       pacientCount: 300,
+      dateObj: {}
     }
   },
   methods:{
@@ -43,6 +46,9 @@ export default {
     },
     setCount(count) {
       this.pacientCount = count
+    },
+    setTime(dateObj) {
+      this.dateObj = dateObj
     }
   },
   setup() {

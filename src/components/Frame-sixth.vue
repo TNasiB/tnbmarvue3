@@ -5,7 +5,7 @@
             <div class="frame-total-wrapper frame-wrapper">
                 <div class="total-wrapper flex">
                     <div class="total-wrapper-key">
-                        <div class="text__key">ФИО</div>
+                        <div class="text__key">ФИО</div> 
                         <div class="text__key">Номер телефона</div>
                         <div class="text__key">E-mail</div>
                         <div class="text__key">Город</div>
@@ -18,16 +18,16 @@
                         <div class="text__key">Стоимость</div>
                     </div>
                     <div class="total-wrapper-value">
-                        <div class="text__value">{{user.name}}</div>
-                        <div class="text__value">{{user.number}}</div>
-                        <div class="text__value">{{user.mail}}</div>
+                        <div class="text__value">{{ user.name }}</div>
+                        <div class="text__value">{{ user.number }}</div>
+                        <div class="text__value">{{ user.mail }}</div>
                         <div class="text__value">Уфа</div>
                         <div class="text__value">ООО "Меги"</div>
                         <div class="text__value">Давлетшина 30</div>
-                        <div class="text__value">{{this.pacientCount}}</div>
+                        <div class="text__value">{{ this.pacientCount }}</div>
                         <div class="text__value">Стоматолог,Хуелог</div>
-                        <div class="text__value">01.01.2002</div>
-                        <div class="text__value">21:21</div>
+                        <div class="text__value">{{ this.dateObj.date }}</div>
+                        <div class="text__value">{{ this.dateObj.time }}</div>
                         <div class="text__value">ОООООООчень много</div>
                     </div>
                 </div>
@@ -43,7 +43,8 @@ export default {
     name: "Frame-sixth",
     props: {
         user: {type: Object},
-        pacientCount: {type: Number}
+        pacientCount: {type: Number},
+        dateObj: {type: Object},
     }
 }
 </script>

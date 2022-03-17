@@ -32,13 +32,16 @@
     </swiper-slide>
 
     <swiper-slide>
-        <FrameFiveth/>
+        <FrameFiveth
+        @set-time="setTime"
+        />
     </swiper-slide>
 
     <swiper-slide>
         <FrameSixth
         :user="user"
         :pacientCount="pacientCount"
+        :dateObj="dateObj"
         />
     </swiper-slide>
 
@@ -47,7 +50,7 @@
 
 <script>
 import { Navigation, Keyboard } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css';
 
 import FrameOne from "./Frame-one.vue"
@@ -58,6 +61,7 @@ import FrameFiveth from "./Frame-fiveth.vue"
 import FrameSixth from "./Frame-sixth.vue"
 
 export default {
+  
     name: 'SliderForm',
     components: {
         Swiper,
@@ -72,6 +76,7 @@ export default {
     props: {
       user: {type: Object},
       pacientCount: {type: Number},
+      dateObj: {type: Object},
     },
     methods:{
       GetData(value){
@@ -82,6 +87,9 @@ export default {
       },
       setCount(count) {
         this.$emit("set-count", count)
+      },
+      setTime(dateObj) {
+        this.$emit("set-time", dateObj)
       }
     },
     setup() {

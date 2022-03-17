@@ -5,8 +5,21 @@
             <div class="frame-date-inner frame-wrapper">
                 <div class="frame-date-wrapper">
                     <div class="frame-date-entry-wrapper flex">
-                        <input type="date" data-placeholder="Дата" class="entry__date" value="2000-01-01">
-                        <input type="time" placeholder="Время" class="entry__time" value="00:00">
+                        <input 
+                        type="date" 
+                        data-placeholder="Дата" c
+                        class="entry__date" 
+                        value="2000-01-01"
+                        @input="setDate"
+                        >
+
+                        <input 
+                        type="time" 
+                        placeholder="Время" 
+                        class="entry__time"
+                        value="00:00"
+                        @input="setDate"
+                        >
                     </div>
                     <ul class="frame-date-list-price flex-column">
                         <div class="title">Расчет стоимости:</div>
@@ -25,6 +38,18 @@
 
 <script>
 export default {
+    name: "Frame-fiveth",
+    methods: {
+        setDate() {
+            let date = document.querySelector(".entry__date"),
+                time = document.querySelector(".entry__time"),
+                dateObj = {
+                    date: date.value,
+                    time: time.value
+                }
+            this.$emit("set-time", dateObj)
+        }
+    }
 }
 </script>
 

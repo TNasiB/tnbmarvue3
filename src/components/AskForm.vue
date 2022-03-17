@@ -22,7 +22,10 @@ export default {
                 }
 
             this.$emit("get-value", user)
-        }
+            name.value = ""
+            number.value = ""
+            mail.value = ""
+        }   
     },
 }
 </script>
