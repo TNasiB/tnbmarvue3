@@ -18,6 +18,8 @@
     <swiper-slide>
         <FrameTwo
         @get-info="GetData"
+        :companies="companies"
+        @send-organization="SendOrganization"
         />
     </swiper-slide>
 
@@ -42,6 +44,7 @@
         :user="user"
         :pacientCount="pacientCount"
         :dateObj="dateObj"
+        :organization="organization"
         />
     </swiper-slide>
 
@@ -77,6 +80,8 @@ export default {
       user: {type: Object},
       pacientCount: {type: Number},
       dateObj: {type: Object},
+      companies:{type:Array},
+      organization:{type:Object},
     },
     methods:{
       GetData(value){
@@ -90,6 +95,9 @@ export default {
       },
       setTime(dateObj) {
         this.$emit("set-time", dateObj)
+      },
+      SendOrganization(organization){
+        this.$emit('ship-organization',organization)
       }
     },
     setup() {

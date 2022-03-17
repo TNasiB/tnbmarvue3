@@ -3,29 +3,36 @@
         <div class="container">
             <h2 class="city-title title">Выберите город и организацию</h2>
             <div class="city-inner frame-wrapper">
-                <input class="input-city completed shadow" @input="GetInfo" type="text" placeholder="Выберите город">
-                <input class="input-org shadow" type="text" placeholder="Выберите организацию">
-                <ul class="org-table shadow">
-                    <!-- Отдельными компонентами -->
-                    <li class="org-item">Меги, Уфа,Давлетшиной 30</li>
-                    <li class="org-item">Меги, Уфа,Давлетшиной 30</li>
-                    <li class="org-item">Меги, Уфа,Давлетшиной 30</li>
-                    <li class="org-item">Меги, Уфа,Давлетшиной 30</li>
-                </ul>
+                <input class="input-city completed shadow" @input="GetInfo" type="text" placeholder="Введите организацию">
+                <!-- <input class="input-org shadow" type="text" placeholder="Выберите организацию"> -->
+               <CompanyWrapper
+                @send-company="SendCompany"
+                :companies="companies"
+                />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import CompanyWrapper from './CompanyWrapper.vue'
 export default {
     name: "Frame-two",
+    props:{
+        companies:{type:Object}
+    },
     methods:{
         GetInfo(){
             let InputCompany=document.querySelector('.input-city')
             let value=InputCompany.value
             this.$emit('get-info',value)
+        },
+       SendCompany(organization){
+            this.$emit('send-organization',organization)
         }
+    },
+    components:{
+        CompanyWrapper,
     }
 }
 </script>
