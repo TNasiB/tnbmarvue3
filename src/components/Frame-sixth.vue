@@ -3,59 +3,57 @@
         <div class="container">
             <h2 class="title">Общая информация</h2>
             <div class="frame-total-wrapper frame-wrapper">
-                <div class="total-wrapper flex">
-                   <table class="total-wrapper">
-                        <tr>
-                            <td class="text__key">ФИО</td>
-                            <td class="text__value">{{user.name}}</td>
-                        </tr>
-                        <tr>
-                            <td class="text__key">Номер телефона</td>
-                            <td class="text__value">{{user.number}}</td>
-                            
-                        </tr>
-                        <tr>
-                            <td class="text__key">E-mail</td>
-                            <td class="text__value">{{user.mail}}</td>
+                <table class="total-wrapper">
+                    <tr>
+                        <td class="text__key">ФИО</td>
+                        <td class="text__value">{{user.name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Номер телефона</td>
+                        <td class="text__value">{{user.number}}</td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="text__key">E-mail</td>
+                        <td class="text__value">{{user.mail}}</td>
 
-                        </tr>
-                        <tr>
-                            <td class="text__key">Город</td>
-                            <td class="text__value">Уфа</td>
-                        </tr>
-                        <tr>
-                            <td class="text__key">Организация</td>
-                            <td class="text__value">ООО "Меги"</td>
-                        </tr>
-                        <tr>
-                            <td class="text__key">Адрес</td>
-                            <td class="text__value">Давлетшина 30</td>
-                        </tr>
-                        <tr>
-                            <td class="text__key">Количество пациентов</td>
-                            <td class="text__value">{{this.pacientCount}}</td>
-                        </tr>
-                        <tr>
-                            <td class="text__key">Специалист</td>
-                            <td class="text__value">Стоматолог,Хуелог</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Город</td>
+                        <td class="text__value">Уфа</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Организация</td>
+                        <td class="text__value">ООО "Меги"</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Адрес</td>
+                        <td class="text__value">Давлетшина 30</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Количество пациентов</td>
+                        <td class="text__value">{{this.pacientCount}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Специалист</td>
+                        <td class="text__value">Стоматолог,Хуелог</td>
 
-                        </tr>
-                        <tr>
-                            <td class="text__key">Дата приема</td>
-                            <td class="text__value">{{ this.dateObj.time }}</td>
-                        </tr>
-                        <tr>
-                            <td class="text__key">Время приема</td>
-                            <td class="text__value">{{ this.dateObj.date }}</td>
-                        </tr>
-                        <tr>
-                            <td class="text__key">Стоимость</td>
-                            <td class="text__value">ОООООООчень много</td>
-                        </tr>
-                    </table>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Дата приема</td>
+                        <td class="text__value">{{ this.dateObj.time }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Время приема</td>
+                        <td class="text__value">{{ this.dateObj.date }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Стоимость</td>
+                        <td class="text__value">ОООООООчень много</td>
+                    </tr>
+                </table>
                 <button class="form-total__button">Записаться на прием</button>
             </div>
-
         </div>
     </div>
 </template>
