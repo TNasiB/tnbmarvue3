@@ -69,6 +69,7 @@ export default {
         user: {type: Object},
         pacientCount: {type: Number},
         dateObj: {type: Object},
+        organization:{type:Object},
         activeSpecs: {type: Array}
     }
 }

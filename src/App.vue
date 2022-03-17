@@ -9,11 +9,14 @@
     @set-count="setCount"
     @set-time="setTime"
     @add-doctor="addDoctor"
+    @ship-organization="ShipOrganization"
     :user="user"
     :pacientCount="pacientCount"
     :dateObj="dateObj"
     :specialists="specialists"
     :activeSpecs="activeSpecs"
+    :companies="companies"
+    :organization="organization"
     />
   </div>
 </template>
@@ -35,6 +38,7 @@ export default {
       user: {},
       pacientCount: 300,
       dateObj: {},
+      organization: {}, 
       specialists: specialists,
       activeSpecs: [],
       cost: 0
@@ -46,7 +50,10 @@ export default {
 
       fetch(`https://search-maps.yandex.ru/v1/?text=${query}&type=biz&lang=ru_RU&apikey=d81da452-d93b-4e52-afd1-27aa7282013f`)
       .then(response=>response.json())
-      .then(data=>(this.companies=data))
+      .then(data=>(this.companies=data.features))
+      console.log(this.companies)
+
+      // console.log(this.companies.features[1].properties.description) // запрос
     },
     getValue(user) {
       this.user = user
@@ -56,6 +63,9 @@ export default {
     },
     setTime(dateObj) {
       this.dateObj = dateObj
+    },
+    ShipOrganization(organization) {
+      this.organization=organization
     },
     addDoctor(doctor) {
       let isContain = this.activeSpecs.some(spec => spec.title == doctor.title)
