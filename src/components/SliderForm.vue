@@ -30,7 +30,10 @@
     </swiper-slide>
 
     <swiper-slide>
-        <FrameFourth/>
+        <FrameFourth
+        :specialists="specialists"
+        @add-doctor="addDoctor"
+        />
     </swiper-slide>
 
     <swiper-slide>
@@ -45,6 +48,7 @@
         :pacientCount="pacientCount"
         :dateObj="dateObj"
         :organization="organization"
+        :activeSpecs="activeSpecs"
         />
     </swiper-slide>
 
@@ -82,6 +86,8 @@ export default {
       dateObj: {type: Object},
       companies:{type:Array},
       organization:{type:Object},
+      specialists: {type: Array},
+      activeSpecs: {type: Array}
     },
     methods:{
       GetData(value){
@@ -98,6 +104,9 @@ export default {
       },
       SendOrganization(organization){
         this.$emit('ship-organization',organization)
+      },
+      addDoctor(doctor) {
+          this.$emit("add-doctor", doctor)
       }
     },
     setup() {

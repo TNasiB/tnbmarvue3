@@ -1,15 +1,21 @@
 <template>
   <div id="app">
-    <HeaderNav/>
+    <HeaderNav
+    />
+
     <SliderForm
     @get-data="GetData"
     @get-value="getValue"
     @set-count="setCount"
     @set-time="setTime"
+    @add-doctor="addDoctor"
     @ship-organization="ShipOrganization"
     :user="user"
     :pacientCount="pacientCount"
     :dateObj="dateObj"
+    :specialists="specialists"
+    :activeSpecs="activeSpecs"
+
     :companies="companies"
     :organization="organization"
     />
@@ -19,6 +25,7 @@
 <script>
 import HeaderNav from "./components/HeaderNav"
 import SliderForm from "./components/SliderForm"
+import specialists from "./assets/specialists.json";
 
 export default {
   name: 'App',
@@ -32,7 +39,10 @@ export default {
       user: {},
       pacientCount: 300,
       dateObj: {},
-      organization:{}
+      organization: {}, 
+      specialists: specialists,
+      activeSpecs: [],
+      cost: 0
     }
   },
   methods:{
@@ -55,8 +65,18 @@ export default {
     setTime(dateObj) {
       this.dateObj = dateObj
     },
-    ShipOrganization(organization){
+    ShipOrganization(organization) {
       this.organization=organization
+    },
+    addDoctor(doctor) {
+      let isContain = this.activeSpecs.some(spec => spec.title == doctor.title)
+      if (!isContain) {
+        this.activeSpecs.push(doctor)
+      } else {
+        let findResult = this.activeSpecs.find(item => item.title == doctor.title)
+        let index = this.activeSpecs.indexOf(findResult)
+        this.activeSpecs[index] = doctor
+      }
     }
   },
   setup() {
@@ -93,7 +113,7 @@ button
 input
   border: none
 body
-  overflow-y: hidden
+  // overflow-y: hidden
 button.radio
   border-radius: 50%
   width: 35px
