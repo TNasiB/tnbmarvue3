@@ -3,34 +3,56 @@
         <div class="container">
             <h2 class="title">Общая информация</h2>
             <div class="frame-total-wrapper frame-wrapper">
-                <div class="total-wrapper flex">
-                    <div class="total-wrapper-key">
-                        <div class="text__key">ФИО</div>
-                        <div class="text__key">Номер телефона</div>
-                        <div class="text__key">E-mail</div>
-                        <div class="text__key">Город</div>
-                        <div class="text__key">Организация</div>
-                        <div class="text__key">Адрес</div>
-                        <div class="text__key">Количество пациентов</div>
-                        <div class="text__key">Специалист</div>
-                        <div class="text__key">Дата приема</div>
-                        <div class="text__key">Время приема</div>
-                        <div class="text__key">Стоимость</div>
-                    </div>
-                    <div class="total-wrapper-value">
-                        <div class="text__value">{{user.name}}</div>
-                        <div class="text__value">{{user.number}}</div>
-                        <div class="text__value">{{user.mail}}</div>
-                        <div class="text__value">Уфа</div>
-                        <div class="text__value">ООО "Меги"</div>
-                        <div class="text__value">Давлетшина 30</div>
-                        <div class="text__value">{{this.pacientCount}}</div>
-                        <div class="text__value">Стоматолог,Хуелог</div>
-                        <div class="text__value">01.01.2002</div>
-                        <div class="text__value">21:21</div>
-                        <div class="text__value">ОООООООчень много</div>
-                    </div>
-                </div>
+                <table class="total-wrapper">
+                    <tr>
+                        <td class="text__key">ФИО</td>
+                        <td class="text__value">{{user.name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Номер телефона</td>
+                        <td class="text__value">{{user.number}}</td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="text__key">E-mail</td>
+                        <td class="text__value">{{user.mail}}</td>
+
+                    </tr>
+                    <tr>
+                         <td class="text__key">Город</td>
+                         <td class="text__value">Уфа</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Организация</td>
+                        <td class="text__value">ООО "Меги"</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Адрес</td>
+                        <td class="text__value">Давлетшина 30</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Количество пациентов</td>
+                        <td class="text__value">{{this.pacientCount}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Специалист</td>
+                        <td class="text__value">Стоматолог,Хуелог</td>
+
+                    </tr>
+                    <tr>
+                        <td class="text__key">Дата приема</td>
+                        <td class="text__value">01.01.2002</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Время приема</td>
+                        <td class="text__value">21:21</td>
+                    </tr>
+                    <tr>
+                        <td class="text__key">Стоимость</td>
+                        <td class="text__value">ОООООООчень много</td>
+                    </tr>
+                    
+                </table>
                 
                 <button class="form-total__button">Записаться на прием</button>
             </div>
@@ -61,14 +83,12 @@ export default {
     border-radius: 50px;
     padding: 20px 40px;
     margin: 0 auto;
-    margin-top: 50px;
 }
 .text__key,.text__value{
     font-family: 'Roboto';
     font-size: 20px;
-    line-height: 28px;
+    line-height: 24px;
     color: #004D45;
-    padding-bottom: 7px;
 }
 .text__value{
     margin-left: 5vw;
