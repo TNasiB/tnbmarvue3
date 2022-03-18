@@ -39,6 +39,9 @@
     <swiper-slide>
         <FrameFiveth
         @set-time="setTime"
+        :pacientCount="pacientCount"
+        :activeSpecs="activeSpecs"
+        :cost="cost"
         />
     </swiper-slide>
 
@@ -49,6 +52,7 @@
         :dateObj="dateObj"
         :organization="organization"
         :activeSpecs="activeSpecs"
+        :cost="cost"
         />
     </swiper-slide>
 
@@ -68,7 +72,6 @@ import FrameFiveth from "./Frame-fiveth.vue"
 import FrameSixth from "./Frame-sixth.vue"
 
 export default {
-  
     name: 'SliderForm',
     components: {
         Swiper,
@@ -87,11 +90,12 @@ export default {
       companies:{type:Array},
       organization:{type:Object},
       specialists: {type: Array},
-      activeSpecs: {type: Array}
+      activeSpecs: {type: Array},
+      cost: {type: Number}
     },
     methods:{
       GetData(value){
-        this.$emit('get-data',value)
+        this.$emit('get-data', value)
       },
       getValue(user) {
         this.$emit("get-value", user)
@@ -110,11 +114,9 @@ export default {
       }
     },
     setup() {
-      const onSwiper = (swiper) => {
-        console.log(swiper);
+      const onSwiper = () => {
       };
       const onSlideChange = () => {
-        console.log('slide change');
       };
       return {
         onSwiper,
@@ -161,4 +163,9 @@ export default {
   flex-direction: column
   justify-content: center
   margin-top: 60px
+  
+.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled
+  opacity: 0.5
+  cursor: auto
+  
 </style>

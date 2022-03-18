@@ -50,7 +50,7 @@
                     </tr>
                     <tr>
                         <td class="text__key">Стоимость</td>
-                        <td class="text__value">ОООООООчень много</td>
+                        <td class="text__value">{{ cost }}₽</td>
                     </tr>
                 </table>
                 <button class="form-total__button">Записаться на прием</button>
@@ -66,8 +66,9 @@ export default {
         pacientCount: {type: Number},
         dateObj: {type: Object},
         organization:{type:Object},
-        activeSpecs: {type: Array}
-    }
+        activeSpecs: {type: Array},
+        cost: {type: Number},
+    },
 }
 </script>
 

@@ -11,11 +11,11 @@
     @add-doctor="addDoctor"
     @ship-organization="ShipOrganization"
     :user="user"
+    :cost="cost"
     :pacientCount="pacientCount"
     :dateObj="dateObj"
     :specialists="specialists"
     :activeSpecs="activeSpecs"
-
     :companies="companies"
     :organization="organization"
     />
@@ -42,10 +42,11 @@ export default {
       organization: {}, 
       specialists: specialists,
       activeSpecs: [],
-      cost: 0
+      costArray: [],
+      cost: 0,
     }
   },
-  methods:{
+  methods: {
     GetData(value){
       let query = value;
 
@@ -53,20 +54,20 @@ export default {
       .then(response=>response.json())
       .then(data=>(this.companies=data.features))
       console.log(this.companies)
-
-      // console.log(this.companies.features[1].properties.description) // запрос
     },
     getValue(user) {
       this.user = user
     },
     setCount(count) {
-      this.pacientCount = count
+      this.pacientCount = +count
+      this.computeCost()
     },
     setTime(dateObj) {
       this.dateObj = dateObj
+      this.dateObj.date = String(this.dateObj.date.split("-").reverse()).replaceAll(",", ".")
     },
     ShipOrganization(organization) {
-      this.organization=organization
+      this.organization = organization
     },
     addDoctor(doctor) {
       let isContain = this.activeSpecs.some(spec => spec.title == doctor.title)
@@ -77,19 +78,15 @@ export default {
         let index = this.activeSpecs.indexOf(findResult)
         this.activeSpecs[index] = doctor
       }
+      this.computeCost()
+    },
+    computeCost() {
+      this.cost = 0
+      for (let i = 0; i < this.activeSpecs.length; i++) {
+        this.costArray[i] = this.activeSpecs[i].cost * this.pacientCount
+      }
+      this.costArray.forEach(item => this.cost += item)
     }
-  },
-  setup() {
-      const onSwiper = (swiper) => {
-        console.log(swiper);
-      };
-      const onSlideChange = () => {
-        console.log('slide change');
-      };
-      return {
-        onSwiper,
-        onSlideChange,
-      };
   },
 }
 </script>
@@ -144,5 +141,6 @@ button.radio.active
   text-align: center
   text-transform: uppercase
   margin: 20px 60px 0
+
 </style>
 
