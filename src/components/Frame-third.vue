@@ -3,7 +3,7 @@
         <div class="container">
             <h2 class="paciens_title title">Выберите количество пациентов на прием</h2>
             <div class="paciens__inner flex-column frame-wrapper">
-                <input @input="setCount" class="slider" type="range" min="300" max="1900" v-model="this.value">
+                <input @input="setCount" class="slider" type="range" min="1" max="2000" v-model="this.value">
                 <div class="numbers"></div>
             </div>
             <div class="input-wrapper flex">
@@ -33,10 +33,11 @@ export default {
 <style scoped>
 .numbers {
     background-image: url(../assets/img/numbers.svg);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    width: 100%;
+    width: 95%;
     height: 70px;
+    margin: 0 auto;
     margin-top: 10px;
 }
 .slider {

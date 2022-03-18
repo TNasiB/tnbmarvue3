@@ -18,16 +18,19 @@
                         placeholder="Время" 
                         class="entry__time"
                         value="00:00"
-                        @input="setDate"
-                        >
+                        @input="setDate">
                     </div>
                     <ul class="frame-date-list-price flex-column">
                         <div class="title">Расчет стоимости:</div>
-                        <li class="text__price">Количество пациентов: 300</li>
-                        <li class="text__price">Количество специалистов: 2</li>
-                        <li class="text__price small">Стоматолог:3000Р</li>
-                        <li class="text__price small">Уролог:5000Р</li>
-                        <li class="text__price large">Итоговая стоимость: ООООочень дохуя</li>
+                        <li class="text__price">Количество пациентов: {{ pacientCount }}</li>
+                        <li class="text__price">Количество специалистов: {{ activeSpecs.length }}</li>
+                        <li 
+                        class="text__price small"
+                        v-for="doctor in activeSpecs"
+                        :key="doctor.id"
+                        > {{ doctor.title }} {{ doctor.cost * pacientCount }}₽</li>
+
+                        <li class="text__price large">Итоговая стоимость: {{ cost }}₽</li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +51,12 @@ export default {
                     time: time.value
                 }
             this.$emit("set-time", dateObj)
-        }
+        },
+    },
+    props: {
+        pacientCount: {type: Number},
+        activeSpecs: {type: Array},
+        cost: {type: Number}
     }
 }
 </script>
