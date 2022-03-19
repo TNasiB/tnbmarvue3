@@ -80,7 +80,7 @@ export default {
     },
     methods:{ 
          sendEmail() {
-            let activeSpecsStr = ""
+             let activeSpecsStr = ""
              for (let i = 0; i < this.activeSpecs.length; i++) {
                  if (activeSpecsStr == "") {
                     activeSpecsStr += this.activeSpecs[i].title
