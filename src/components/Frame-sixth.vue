@@ -79,15 +79,23 @@ export default {
     },
     methods:{
          sendEmail() {
-             console.log(this.activeSpecs)
-             var templateParams = {
+             let activeSpecsStr = ""
+             for (let i = 0; i < this.activeSpecs.length; i++) {
+                 if (activeSpecsStr == "") {
+                    activeSpecsStr += this.activeSpecs[i].title
+                 } else {
+                     activeSpecsStr += `, ${this.activeSpecs[i].title}`
+                 }
+             }
+             console.log(activeSpecsStr)
+             let templateParams = {
                 name: this.user.name,
                 email:this.user.mail,
                 number: this.user.number,
                 company_name: this.organization.name,
                 company_address: this.organization.address,
                 pacient_count: this.pacientCount,
-                spec: this.activeSpec[1].title ,
+                spec: this.activeSpec[1].title,
                 date: this.dateObj.date,
                 time: this.dateObj.time,
                 price: this.cost,

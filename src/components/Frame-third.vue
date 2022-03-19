@@ -33,7 +33,7 @@ export default {
 <style scoped>
 .numbers {
     background-image: url(../assets/img/numbers.svg);
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     width: 95%;
     height: 70px;
