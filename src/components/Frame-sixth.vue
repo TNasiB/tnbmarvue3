@@ -1,7 +1,7 @@
 <template>
     <div class="frame-total">
         <div class="container">
-            <h2 class="title">Общая информация</h2>
+            <h2 class="title" @click="test">Общая информация</h2>
             <div class="frame-total-wrapper frame-wrapper">
                 <form class="total-wrapper" ref="form"  @submit.prevent="sendEmail">
                     <tr>
@@ -53,7 +53,7 @@
                         <td class="text__value">{{ cost }}₽</td>
                     </tr>
                 </form>
-                <button class="form-total__button" @click="sendEmail">Записаться на прием</button>
+                <button class="form-total__button" @click="sendEmail"  :class="{red:!isCorrect}">Записаться на прием</button>
             </div>
         </div>
     </div>
@@ -65,7 +65,8 @@ export default {
     name: "Frame-sixth",
     data(){
         return{
-           templateParams:{}
+           templateParams:{},
+           isCorrect:true,
         }
     },
     props: {
@@ -77,34 +78,48 @@ export default {
         cost: {type: Number},
         
     },
-    methods:{
+    methods:{ 
          sendEmail() {
-             console.log(this.activeSpecs)
-             var templateParams = {
+             let button=document.querySelector('.form-total__button')
+             if(typeof this.user.name=='string' && typeof this.user.number=='string' && typeof this.user.mail=='string' && 
+                typeof this.organization.name=='string'&& typeof this.organization.address=='string' && typeof this.pacientCount=='number'
+              && typeof this.dateObj.date=='string' && typeof this.dateObj.time=='string' && typeof this.cost=='number')
+              {
+                var templateParams = {
                 name: this.user.name,
                 email:this.user.mail,
                 number: this.user.number,
                 company_name: this.organization.name,
                 company_address: this.organization.address,
                 pacient_count: this.pacientCount,
-                spec: this.activeSpec[1].title ,
+                // spec: this.activeSpec[1].title ,
                 date: this.dateObj.date,
                 time: this.dateObj.time,
                 price: this.cost,
             };
-        emailjs.send("service_cw02kwz","template_k987aii",templateParams,'0Rkinjq86HfyK6vb5')
-        .then((result) => {
-            console.log('SUCCESS!', result.text);
-        }, (error) => {
-            console.log('FAILED...', error.text);
-        });
-    }
+                emailjs.send("service_cw02kwz","template_k987aii",templateParams,'0Rkinjq86HfyK6vb5')
+                .then((result) => {
+                    console.log('SUCCESS!', result.text);
+                }, (error) => {
+                    console.log('FAILED...', error.text);
+                });
+                this.isCorrect=true
+                button.textContent='Заявка принята'
+              }
+              else{
+                this.isCorrect=false
+
+              }
+        }
     }
 }
 </script>
 
 
 <style>
+.red{
+    background: red !important;
+}
 .frame-total-wrapper{
     display: flex;
     flex-direction: column;
