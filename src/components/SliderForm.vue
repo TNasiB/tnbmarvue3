@@ -18,6 +18,7 @@
     <swiper-slide>
         <FrameTwo
         @get-info="GetData"
+        @get-input="GetInput"
         :companies="companies"
         @send-organization="SendOrganization"
         />
@@ -73,6 +74,10 @@ import FrameSixth from "./Frame-sixth.vue"
 
 export default {
     name: 'SliderForm',
+    data(){
+      return{
+      }
+    },
     components: {
         Swiper,
         SwiperSlide,

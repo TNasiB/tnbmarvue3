@@ -41,5 +41,6 @@ export default {
         font-size: 30px
     .tel 
         text-decoration: underline
+        text-decoration-skip-ink: none
         font-size: 30px
 </style>

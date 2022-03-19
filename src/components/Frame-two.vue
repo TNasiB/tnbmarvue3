@@ -3,11 +3,12 @@
         <div class="container">
             <h2 class="city-title title">Выберите город и организацию</h2>
             <div class="city-inner frame-wrapper">
-                <input class="input-city completed shadow" @input="GetInfo" type="text" placeholder="Введите организацию">
+                <input class="input-city completed shadow" @keyup.enter="GetInfo" type="text" placeholder="Введите организацию">
                 <!-- <input class="input-org shadow" type="text" placeholder="Выберите организацию"> -->
                <CompanyWrapper
                 @send-company="SendCompany"
                 :companies="companies"
+                :isInput="isInput"
                 />
             </div>
         </div>
@@ -18,6 +19,11 @@
 import CompanyWrapper from './CompanyWrapper.vue'
 export default {
     name: "Frame-two",
+    data(){
+        return{
+            isInput:false,
+        }
+    },
     props:{
         companies:{type:Object}
     },
@@ -25,7 +31,14 @@ export default {
         GetInfo(){
             let InputCompany=document.querySelector('.input-city')
             let value=InputCompany.value
+            if (value==""){
+                this.isInput=false
+            }
+            else{
+                this.isInput=true
+            }
             this.$emit('get-info',value)
+            
         },
        SendCompany(organization){
             this.$emit('send-organization',organization)

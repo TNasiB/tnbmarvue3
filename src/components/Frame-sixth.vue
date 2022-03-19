@@ -3,9 +3,9 @@
         <div class="container">
             <h2 class="title">Общая информация</h2>
             <div class="frame-total-wrapper frame-wrapper">
-                <table class="total-wrapper">
+                <form class="total-wrapper" ref="form"  @submit.prevent="sendEmail">
                     <tr>
-                        <td class="text__key">ФИО</td>
+                        <td class="text__key" @click="test">ФИО</td>
                         <td class="text__value">{{user.name}}</td>
                     </tr>
                     <tr>
@@ -20,11 +20,11 @@
                     </tr>
                     <tr>
                         <td class="text__key">Организация</td>
-                        <td class="text__value">{{this.organization.name}}</td>
+                        <td class="text__value">{{organization.name}}</td>
                     </tr>
                     <tr>
                         <td class="text__key">Адрес</td>
-                        <td class="text__value">{{this.organization.address}}</td>
+                        <td class="text__value">{{organization.address}}</td>
                     </tr>
                     <tr>
                         <td class="text__key">Количество пациентов</td>
@@ -42,25 +42,32 @@
                     </tr>
                     <tr>
                         <td class="text__key">Дата приема</td>
-                        <td class="text__value">{{ this.dateObj.time }}</td>
+                        <td class="text__value">{{ this.dateObj.date }}</td>
                     </tr>
                     <tr>
                         <td class="text__key">Время приема</td>
-                        <td class="text__value">{{ this.dateObj.date }}</td>
+                        <td class="text__value">{{ this.dateObj.time }}</td>
                     </tr>
                     <tr>
                         <td class="text__key">Стоимость</td>
                         <td class="text__value">{{ cost }}₽</td>
                     </tr>
-                </table>
-                <button class="form-total__button">Записаться на прием</button>
+                </form>
+                <button class="form-total__button" @click="sendEmail">Записаться на прием</button>
             </div>
         </div>
     </div>
 </template>
 <script>
+import emailjs from '@emailjs/browser';
+
 export default {
     name: "Frame-sixth",
+    data(){
+        return{
+           templateParams:{}
+        }
+    },
     props: {
         user: {type: Object},
         pacientCount: {type: Number},
@@ -68,7 +75,31 @@ export default {
         organization:{type:Object},
         activeSpecs: {type: Array},
         cost: {type: Number},
+        
     },
+    methods:{
+         sendEmail() {
+             console.log(this.activeSpecs)
+             var templateParams = {
+                name: this.user.name,
+                email:this.user.mail,
+                number: this.user.number,
+                company_name: this.organization.name,
+                company_address: this.organization.address,
+                pacient_count: this.pacientCount,
+                spec: this.activeSpec[1].title ,
+                date: this.dateObj.date,
+                time: this.dateObj.time,
+                price: this.cost,
+            };
+        emailjs.send("service_cw02kwz","template_k987aii",templateParams,'0Rkinjq86HfyK6vb5')
+        .then((result) => {
+            console.log('SUCCESS!', result.text);
+        }, (error) => {
+            console.log('FAILED...', error.text);
+        });
+    }
+    }
 }
 </script>
 
