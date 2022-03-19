@@ -1,7 +1,7 @@
 <template>
     <div class="frame-total">
         <div class="container">
-            <h2 class="title">Общая информация</h2>
+            <h2 class="title" @click="test">Общая информация</h2>
             <div class="frame-total-wrapper frame-wrapper">
                 <form class="total-wrapper" ref="form"  @submit.prevent="sendEmail">
                     <tr>
@@ -53,7 +53,7 @@
                         <td class="text__value">{{ cost }}₽</td>
                     </tr>
                 </form>
-                <button class="form-total__button" @click="sendEmail">Записаться на прием</button>
+                <button class="form-total__button" @click="sendEmail"  :class="{red:!isCorrect}">Записаться на прием</button>
             </div>
         </div>
     </div>
@@ -65,7 +65,8 @@ export default {
     name: "Frame-sixth",
     data(){
         return{
-           templateParams:{}
+           templateParams:{},
+           isCorrect:true,
         }
     },
     props: {
@@ -77,7 +78,7 @@ export default {
         cost: {type: Number},
         
     },
-    methods:{
+    methods:{ 
          sendEmail() {
              let activeSpecsStr = ""
              for (let i = 0; i < this.activeSpecs.length; i++) {
@@ -100,19 +101,26 @@ export default {
                 time: this.dateObj.time,
                 price: this.cost,
             };
-        emailjs.send("service_cw02kwz","template_k987aii",templateParams,'0Rkinjq86HfyK6vb5')
-        .then((result) => {
-            console.log('SUCCESS!', result.text);
-        }, (error) => {
-            console.log('FAILED...', error.text);
-        });
-    }
+                emailjs.send("service_cw02kwz","template_k987aii",templateParams,'0Rkinjq86HfyK6vb5')
+                .then((result) => {
+                    console.log('SUCCESS!', result.text);
+                }, (error) => {
+                    console.log('FAILED...', error.text);
+                });
+                this.isCorrect=true
+                button.textContent='Заявка принята'
+              
+              
+        }
     }
 }
 </script>
 
 
 <style>
+.red{
+    background: red !important;
+}
 .frame-total-wrapper{
     display: flex;
     flex-direction: column;
