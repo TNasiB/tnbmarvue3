@@ -53,7 +53,8 @@
                         <td class="text__value">{{ cost }}₽</td>
                     </tr>
                 </form>
-                <button class="form-total__button" @click="sendEmail"  :class="{red:!isCorrect}">Записаться на прием</button>
+                <button class="form-total__button" @click="sendEmail"  :class="{red:!isCorrect, none:isButton}" >Записаться на прием</button>
+                <div class="form-total__button request__button"    :class="{none:!isButton}">Заявка принята</div>
             </div>
         </div>
     </div>
@@ -67,6 +68,7 @@ export default {
         return{
            templateParams:{},
            isCorrect:true,
+           isButton:false,
         }
     },
     props: {
@@ -79,36 +81,48 @@ export default {
         
     },
     methods:{ 
-         sendEmail() {
-             let activeSpecsStr = ""
-             for (let i = 0; i < this.activeSpecs.length; i++) {
-                 if (activeSpecsStr == "") {
-                    activeSpecsStr += this.activeSpecs[i].title
-                 } else {
-                     activeSpecsStr += `, ${this.activeSpecs[i].title}`
-                 }
-             }
-             console.log(activeSpecsStr)
-             let templateParams = {
-                name: this.user.name,
-                email:this.user.mail,
-                number: this.user.number,
-                company_name: this.organization.name,
-                company_address: this.organization.address,
-                pacient_count: this.pacientCount,
-                spec: activeSpecsStr,
-                date: this.dateObj.date,
-                time: this.dateObj.time,
-                price: this.cost,
-            };
-                emailjs.send("service_cw02kwz","template_k987aii",templateParams,'0Rkinjq86HfyK6vb5')
-                .then((result) => {
-                    console.log('SUCCESS!', result.text);
-                }, (error) => {
-                    console.log('FAILED...', error.text);
-                });
-                this.isCorrect=true
-                button.textContent='Заявка принята'
+        sendEmail() {
+                let activeSpecsStr = ""
+                for (let i = 0; i < this.activeSpecs.length; i++) {
+                    if (activeSpecsStr == "") {
+                        activeSpecsStr += this.activeSpecs[i].title
+                    } else {
+                        activeSpecsStr += `, ${this.activeSpecs[i].title}`
+                    }
+                }
+                if(activeSpecsStr!='' && typeof this.user.name=='string' && typeof this.user.number=='string' && typeof this.user.mail=='string' && 
+                    typeof this.organization.name=='string'&& typeof this.organization.address=='string' && typeof this.pacientCount=='number'
+                && typeof this.dateObj.date=='string' && typeof this.dateObj.time=='string' && typeof this.cost=='number')
+                {
+                    let templateParams = {
+                    name: this.user.name,
+                    email:this.user.mail,
+                    number: this.user.number,
+                    company_name: this.organization.name,
+                    company_address: this.organization.address,
+                    pacient_count: this.pacientCount,
+                    spec: activeSpecsStr,
+                    date: this.dateObj.date,
+                    time: this.dateObj.time,
+                    price: this.cost,
+                    
+                    };
+                    emailjs.send("service_cw02kwz","template_k987aii",templateParams,'0Rkinjq86HfyK6vb5')
+                    .then((result) => {
+                        console.log('SUCCESS!', result.text);
+                    }, (error) => {
+                        console.log('FAILED...', error.text);
+                    });
+                    this.isCorrect=true
+                    this.isButton=true
+                   
+                }    
+
+                else{
+
+                this.isCorrect=false
+
+                }
               
               
         }
@@ -118,6 +132,13 @@ export default {
 
 
 <style>
+.request__button{
+    line-height: 7vh !important;
+    background-color:#004D45 !important;
+}
+.none{
+    display: none;
+}
 .red{
     background: red !important;
 }

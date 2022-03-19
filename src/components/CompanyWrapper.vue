@@ -1,5 +1,5 @@
 <template>
-         <table class="org-table shadow" @click="test" :class="{none:!isInput}">
+         <table class="org-table shadow" :class="{none:!isInput}">
              <CompanyItem
              v-for="(company,index) in companies" :key="index" :company="company"
              @ship-company="shipCompany"
@@ -21,9 +21,6 @@ export default {
     methods:{
         shipCompany(organization){
             this.$emit('send-company',organization)
-        },
-        test(){
-            console.log(this.isInput)
         }
     }
 }
