@@ -1,5 +1,5 @@
 <template>
-         <table class="org-table shadow">
+         <table class="org-table shadow" @click="test" :class="{none:!isInput}">
              <CompanyItem
              v-for="(company,index) in companies" :key="index" :company="company"
              @ship-company="shipCompany"
@@ -13,6 +13,7 @@ export default {
     props:{
         companies:{type:Array},
         company:{type:Object},
+        isInput:{type:Boolean},
     },
     components:{
         CompanyItem,
@@ -20,6 +21,9 @@ export default {
     methods:{
         shipCompany(organization){
             this.$emit('send-company',organization)
+        },
+        test(){
+            console.log(this.isInput)
         }
     }
 }
@@ -35,5 +39,6 @@ export default {
     border: 2px solid #26A69A
     border-radius: 40px
     margin-top: 20px
-
+.none
+    display: none
 </style>
