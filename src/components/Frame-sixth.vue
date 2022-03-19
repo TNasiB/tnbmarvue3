@@ -80,19 +80,23 @@ export default {
     },
     methods:{ 
          sendEmail() {
-             let button=document.querySelector('.form-total__button')
-             if(typeof this.user.name=='string' && typeof this.user.number=='string' && typeof this.user.mail=='string' && 
-                typeof this.organization.name=='string'&& typeof this.organization.address=='string' && typeof this.pacientCount=='number'
-              && typeof this.dateObj.date=='string' && typeof this.dateObj.time=='string' && typeof this.cost=='number')
-              {
-                var templateParams = {
+            let activeSpecsStr = ""
+             for (let i = 0; i < this.activeSpecs.length; i++) {
+                 if (activeSpecsStr == "") {
+                    activeSpecsStr += this.activeSpecs[i].title
+                 } else {
+                     activeSpecsStr += `, ${this.activeSpecs[i].title}`
+                 }
+             }
+             console.log(activeSpecsStr)
+             let templateParams = {
                 name: this.user.name,
                 email:this.user.mail,
                 number: this.user.number,
                 company_name: this.organization.name,
                 company_address: this.organization.address,
                 pacient_count: this.pacientCount,
-                // spec: this.activeSpec[1].title ,
+                spec: activeSpecsStr,
                 date: this.dateObj.date,
                 time: this.dateObj.time,
                 price: this.cost,
@@ -105,11 +109,8 @@ export default {
                 });
                 this.isCorrect=true
                 button.textContent='Заявка принята'
-              }
-              else{
-                this.isCorrect=false
-
-              }
+              
+              
         }
     }
 }
