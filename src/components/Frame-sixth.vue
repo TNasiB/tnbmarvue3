@@ -95,7 +95,7 @@ export default {
                 company_name: this.organization.name,
                 company_address: this.organization.address,
                 pacient_count: this.pacientCount,
-                spec: this.activeSpec[1].title,
+                spec: activeSpecsStr,
                 date: this.dateObj.date,
                 time: this.dateObj.time,
                 price: this.cost,
