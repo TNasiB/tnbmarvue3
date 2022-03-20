@@ -3,7 +3,7 @@
         <tr @click="ShipCompany" class="company-name-wrapper">
             <div class="company-name">
                 <td class="org-item">{{company.properties.name}}</td>
-                <td  class=" ord-item company__city">{{company.properties.description}}</td>
+                <td  class=" org-item company__city">{{company.properties.description}}</td>
             </div>
             <button 
                 class="radio"
@@ -61,5 +61,23 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     padding: 10px 0;
+    align-items: center;
+}
+.radio{
+    min-width: 35px !important;
+}
+@media (max-width:780px){
+    .input-city {
+        height: 54px;
+    }
+}
+@media (max-width:780px){
+    .input-city {
+        height: 54px;
+        font-size: 20px;
+    }
+    .org-item{
+        font-size: 20px;
+    }
 }
 </style>

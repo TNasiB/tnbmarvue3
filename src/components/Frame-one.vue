@@ -44,12 +44,14 @@ export default {
 .frame-form__img{
     width: 40%;
     background-image: url(../assets/img/med_main.png);
-    background-size: cover;
+    background-size: contain;
     height: 40vw;
 }
 .frame-form-wrapper{
     width: 100%;
     align-items: center;
+    height: 50vh;
+    justify-content: center;
 
 }
 .frame-form-entry-wrapper{
@@ -93,5 +95,37 @@ export default {
 }
 .form-entry__button:hover{
     background: #004D45;
+}
+@media (max-width:900px){
+    .frame-form__img{
+        width: 44%;
+        height: 46vw;
+    }
+    .frame-form-entry-wrapper{
+        width: 50%;
+    }
+}
+@media (max-width:640px){
+    .frame-form__img{
+        width: 52%;
+        height: 52vw;
+    }
+    .frame-form-entry-wrapper{
+        width: 50%;
+    }
+    .form-entry__name::placeholder, .form-entry__number::placeholder, .form-entry__mail::placeholder{
+        font-size: 18px;
+    }
+    .frame-form__title{
+        line-height: 30px;
+    }
+}
+@media (max-width:520px){
+    .frame-form__img{
+        display: none;
+    }
+    .frame-form-entry-wrapper{
+        width: 90%;
+    }
 }
 </style>

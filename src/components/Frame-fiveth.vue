@@ -9,7 +9,7 @@
                         type="date" 
                         data-placeholder="Дата" c
                         class="entry__date" 
-                        value="2000-01-01"
+                        value="----"
                         @input="setDate"
                         >
 
@@ -17,11 +17,11 @@
                         type="time" 
                         placeholder="Время" 
                         class="entry__time"
-                        value="00:00"
+                        value="--:--"
                         @input="setDate">
                     </div>
                     <ul class="frame-date-list-price flex-column">
-                        <div class="title">Расчет стоимости:</div>
+                        <div class="title price__title">Расчет стоимости:</div>
                         <li class="text__price">Количество пациентов: {{ pacientCount }}</li>
                         <li class="text__price">Количество специалистов: {{ activeSpecs.length }}</li>
                         <li 
@@ -106,6 +106,25 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .text__price.large{
     font-size: 30px;
 }
-
+@media (max-width: 700px){
+    .text__price.small{
+        font-size: 18px;
+    }
+    .text__price.large{
+        font-size: 23px;
+    }
+    .text__price{
+        font-size: 20px;
+    }
+    .price__title{
+        margin-bottom: 30px !important;
+    }
+    .frame-date-list-price{
+        margin-top: 40px;
+    }
+    .entry__date,.entry__time{
+        width: 300px;
+    }
+}
 
 </style>

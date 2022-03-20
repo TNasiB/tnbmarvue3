@@ -7,8 +7,8 @@
                 <div class="numbers"></div>
             </div>
             <div class="input-wrapper flex">
-                <p>Приемы: </p>
-                <input @input="setCount" class="input-test" type="number" v-model="this.value">
+                <p class="paciens__count">Количество пациентов: </p>
+                <input @input="setCount" class="input-count" type="number" v-model="this.value">
             </div>
         </div>
     </div>
@@ -31,6 +31,14 @@ export default {
 </script>
 
 <style scoped>
+.paciens__count{
+    font-family: 'Roboto';
+    list-style: disc;
+    font-size: 24px;
+    line-height: 46px;
+    color: #004D45;
+
+}
 .numbers {
     background-image: url(../assets/img/numbers.svg);
     background-size: contain;
@@ -43,12 +51,17 @@ export default {
 .slider {
     margin-top: 30px;
 }
-.input-test {
+.input-count {
   font-size: 30px;
   width: 100px;
+  font-family: 'Roboto';
+  list-style: disc;
+  font-size: 24px;
+  line-height: 46px;
+  color: #004D45;
+   margin-left: 10px;
 }
 .input-wrapper {
-  justify-content: space-between;
   margin-top: 30px;
   font-size: 30px;
 }
@@ -141,5 +154,25 @@ how to remove the virtical space around the range input in IE*/
     /*Edge starts the margin from the thumb, not the track as other browsers do*/
   }
 }
-
+@media (max-width:800px){
+  input[type=range].slider::-ms-thumb,.input[type=range].slider::-moz-range-thumb,.input[type=range].slider::-webkit-slider-thumb {
+    width: 30px;
+    height: 30px;
+  }
+  input[type="range"].slider[data-v-f20fc0f2]::-moz-range-thumb{
+    width: 30px;
+    height: 30px;
+  }
+  
+}
+@media (max-width: 600px){
+  input[type="range"].slider[data-v-f20fc0f2]::-moz-range-thumb{
+    width: 20px;
+    height: 20px;
+  }
+  input[type=range].slider::-ms-thumb,.input[type=range].slider::-moz-range-thumb,.input[type=range].slider::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+  }
+}
 </style>

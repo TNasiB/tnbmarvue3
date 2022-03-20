@@ -7,7 +7,7 @@
                 <p class="logo-name">Медицинское обследование</p>
             </div>
             
-            <a href="" class="tel">+7(917)739-11-29</a>
+            <a href="" class="tel">+7-917-739-11-29</a>
         </div>        
     </div>
 </header>
@@ -43,4 +43,12 @@ export default {
         text-decoration: underline
         text-decoration-skip-ink: none
         font-size: 30px
+    @media (max-width:580px)
+        .tel
+            font-size: 20px
+        .logo-name
+            font-size: 20px
+        .logo-img
+            width: 30px
+            height: 30px
 </style>

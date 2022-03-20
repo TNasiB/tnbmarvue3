@@ -80,4 +80,18 @@ input.completed::placeholder
     margin-top: 20px
 .org-item + .org-item
     margin-top: 20px
+@media (max-width:780px)
+    .input-city 
+        height: 54px
+    
+
+@media (max-width:780px)
+    .input-city 
+        height: 54px
+        font-size: 20px
+    
+    .org-item
+        font-size: 20px
+
+
 </style>
