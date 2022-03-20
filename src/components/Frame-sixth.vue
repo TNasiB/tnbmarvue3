@@ -4,33 +4,33 @@
             <h2 class="title" @click="test">Общая информация</h2>
             <div class="frame-total-wrapper frame-wrapper">
                 <form class="total-wrapper" ref="form"  @submit.prevent="sendEmail">
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key" @click="test">ФИО</td>
                         <td class="text__value">{{user.name}}</td>
                     </tr>
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key">Номер телефона</td>
                         <td class="text__value">{{user.number}}</td>
                         
                     </tr>
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key">E-mail</td>
                         <td class="text__value">{{user.mail}}</td>
 
                     </tr>
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key">Организация</td>
                         <td class="text__value">{{organization.name}}</td>
                     </tr>
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key">Адрес</td>
                         <td class="text__value">{{organization.address}}</td>
                     </tr>
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key">Количество пациентов</td>
                         <td class="text__value">{{this.pacientCount}}</td>
                     </tr>
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key">Специалист</td>
                         <td class="text__value">
                             <span 
@@ -40,15 +40,15 @@
                         </td>
 
                     </tr>
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key">Дата приема</td>
                         <td class="text__value">{{ this.dateObj.date }}</td>
                     </tr>
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key">Время приема</td>
                         <td class="text__value">{{ this.dateObj.time }}</td>
                     </tr>
-                    <tr>
+                    <tr class="text-table-wrapper"> 
                         <td class="text__key">Стоимость</td>
                         <td class="text__value">{{ cost }}₽</td>
                     </tr>
@@ -161,7 +161,7 @@ export default {
     color: #004D45;
 }
 .text__value{
-    margin-left: 5vw;
+    padding-left: 8vw;
 }
 .form-total__button{
     width: 80%;
@@ -179,5 +179,26 @@ export default {
 }
 .form-total__button:hover{
     background: #004D45;
+}
+.text-table-wrapper{
+    max-width: 100px;
+}
+@media (max-width:700px) {
+    .total-wrapper{
+        width: 100%;
+        border: 3px solid #26A69A;
+        border-radius: 50px;
+        padding: 20px 20px;
+        margin: 0 auto;
+}
+}
+@media (max-width:500px) {
+    .text__key,.text__value{
+    font-size: 18px;
+    line-height: 24px;
+    }
+    .text__value{
+        padding-left: 2vw;
+    }
 }
 </style>

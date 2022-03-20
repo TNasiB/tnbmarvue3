@@ -141,6 +141,11 @@ button.radio.active
   text-align: center
   text-transform: uppercase
   margin: 20px 60px 0
-
+@media (max-width:900px)
+  .title
+    font-size: 30px
+@media (max-width:640px)
+  .title
+    font-size: 20px
 </style>
 
